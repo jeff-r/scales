@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'io/console'
+
+# Define an array of major scales
+MAJOR_SCALES = [
+  'C Major', 'G Major', 'D Major', 'A Major', 'E Major', 'B Major',
+  'F# Major', 'C# Major', 'F Major', 'Bb Major', 'Eb Major', 'Ab Major'
+]
+
+# Function to clear the screen
+def clear_screen
+  system('clear') || system('cls')
+end
+
+# Function to print a random major scale
+def print_random_scale
+  clear_screen
+  scale = MAJOR_SCALES.sample
+  puts scale
+end
+
+# Main loop to listen for key presses
+puts "Press the spacebar to get a random major scale, any other key to exit."
+
+loop do
+  input = STDIN.getch # Get the keypress
+
+  if input == ' '
+    print_random_scale
+  else
+    break # Exit the loop if any other key is pressed
+  end
+end
+
+clear_screen
+puts "Good luck with your practice!"
+

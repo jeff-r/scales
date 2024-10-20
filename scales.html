@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Major Scale Practice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #container {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    #scale {
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+
+    #instructions {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <div id="instructions">Press the spacebar or click anywhere to get a random major scale.</div>
+    <div id="scale"></div>
+  </div>
+
+  <script>
+    // List of major scales excluding Db Major and Gb Major
+    const majorScales = [
+      'C Major', 'G Major', 'D Major', 'A Major', 'E Major', 'B Major',
+      'F# Major', 'C# Major', 'F Major', 'Bb Major', 'Eb Major', 'Ab Major'
+    ];
+
+    // Function to display a random scale
+    function displayRandomScale() {
+      const scaleElement = document.getElementById('scale');
+      const randomScale = majorScales[Math.floor(Math.random() * majorScales.length)];
+      scaleElement.textContent = randomScale;
+    }
+
+    // Clear the screen and reset the scale text
+    function clearScreen() {
+      document.getElementById('scale').textContent = '';
+    }
+
+    // Event handler for keypress (spacebar) and click
+    function handleNextScale() {
+      clearScreen();
+      displayRandomScale();
+    }
+
+    // Listen for key presses (spacebar)
+    document.addEventListener('keydown', function(event) {
+      if (event.code === 'Space') {
+        event.preventDefault(); // Prevent page scroll on spacebar press
+        handleNextScale();
+      }
+    });
+
+    // Listen for click events
+    document.getElementById('container').addEventListener('click', function() {
+      handleNextScale();
+    });
+  </script>
+
+</body>
+</html>
+
